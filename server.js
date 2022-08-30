@@ -4,6 +4,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
+const Clarifai = require('clarifai');
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -43,6 +44,10 @@ app.get('/profile/:id', (req ,res) => {profile.profileGet(req,res,knex)})
 
 // image
 app.put('/image', (req,res) => {image.imagePut(req,res,knex)})
+
+// Image-Api-Call
+app.post('./imageUrl', (req,res) => {image.handleApiCall(req,res)})
+
 
 app.listen(3000, () => {
 	console.log("runnig bro")
