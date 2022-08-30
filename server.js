@@ -46,7 +46,7 @@ app.get('/profile/:id', (req ,res) => {profile.profileGet(req,res,knex)})
 app.put('/image', (req,res) => {image.imagePut(req,res,knex)})
 
 // Image-Api-Call
-app.post('./imageUrl', (req,res) => {image.handleApiCall(req,res)})
+app.post('/imageUrl', (req,res) => {image.handleApiCall(req,res)})
 
 
 app.listen(3000, () => {

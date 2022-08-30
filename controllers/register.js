@@ -1,6 +1,11 @@
 const handleRegister = (req,res,knex,bcrypt) => {
 
 	const {name, email, password} = req.body;
+
+	if(!email || !name || !password){
+		return res.status(400).json('oops, unable to register')
+	}
+
 	const salt = bcrypt.genSaltSync();
 	const hasPas = bcrypt.hashSync(password, salt);
 	
@@ -22,16 +27,12 @@ const handleRegister = (req,res,knex,bcrypt) => {
 				.then(user => {
 					res.json(user[0])
 				})
-
 		})
 		.then(trx.commit)
 		.catch(trx.rollback)
-
 	})
 	.catch(err => res.status(400).json('unable to register'));
-
 } 
-
 
 module.exports = {
 	handleRegister
