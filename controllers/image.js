@@ -4,11 +4,11 @@ const imagePut = (req,res,knex) => {
 
 	const {id} = req.body;	
 	knex('users').where('id','=',id)
-	.increment('enteries', 1)
-	.returning('enteries')
-	.then(enteries => {
-		res.json(enteries[0].enteries);
-	}).catch(err => res.status(400).json('unable to get enteries'))
+	.increment('entries', 1)
+	.returning('entries')
+	.then(entries => {
+		res.json(entries[0].entries);
+	}).catch(err => res.status(400).json('unable to get entries'))
 
 }
 
