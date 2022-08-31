@@ -49,7 +49,7 @@ app.put('/image', (req,res) => {image.imagePut(req,res,knex)})
 app.post('/imageUrl', (req,res) => {image.handleApiCall(req,res)})
 
 
-app.listen(3000, () => {
-	console.log("runnig bro")
+app.listen(process.env.PORT || 3000, () => {
+	console.log(`runnig bro, on ${process.env.PORT}`)
 })
 
