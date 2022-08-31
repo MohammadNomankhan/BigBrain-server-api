@@ -8,11 +8,8 @@ const Clarifai = require('clarifai');
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    host : 'postgresql-colorful-42138',
-    port : 5432,
-    user : 'nomanstwt',
-    password : 'ChuSup@321',
-    database : 'smart-brain'
+    connectionString : process.env.DATABASE_URL,
+    ssl: true,
   }
 });
 
